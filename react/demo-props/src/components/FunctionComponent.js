@@ -1,6 +1,11 @@
-function FunctionComponent(props){
-    return(
-        <h1>Function: {props.firstNumber + props.secondNumber }</h1>
-    );
+import React from 'react';
+
+const FunctionComponent = () => {
+  return (
+    <div>
+      
+    </div>
+  );
 }
+
 export default FunctionComponent;
