@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const TopList = () => {
+const ToDoList = () => {
     const [form, setForm] = useState({ name: '' });
     const [congViec, setCongViec] = useState([]);
 
@@ -22,9 +22,9 @@ const TopList = () => {
     };
 
     return (
-        <div className="App">
+        <div>
             <h1>Quản Lý Công Việc</h1>
-            <div className="task-input">
+            <div>
                 <label>Công việc:</label>
                 <input name='name' value={form.name} onChange={handleChange} placeholder='Nhập vào công việc' />
                 <button type='button' onClick={addCongViec}>Thêm</button>
@@ -47,4 +47,4 @@ const TopList = () => {
     );
 };
 
-export default TopList;
+export default ToDoList;
