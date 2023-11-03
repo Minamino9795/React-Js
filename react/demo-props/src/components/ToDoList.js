@@ -18,7 +18,7 @@ const ToDoList = () => {
         } else {
             alert('Vui lòng nhập vào công việc!');
         }
-        setForm({ name: '' });
+        // setForm({ name: '' });
     };
 
     return (

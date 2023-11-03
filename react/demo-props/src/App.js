@@ -7,6 +7,9 @@ import Selector from './components/Selector';
 import UseIncrement from './components/useIncrement';
 import SignUp from './components/SignUp';
 import ToDoList from './components/ToDoList';
+import Books from './components/Books';
+import ViDu from './formik/ViDu';
+import ToDoList2 from './formik/ToDoList2';
 
 
 function App() {
@@ -19,7 +22,11 @@ function App() {
     {/* <Selector/> */}
     {/* <UseIncrement/> */}
     {/* <SignUp/> */}
-    <ToDoList/>
+    {/* <ToDoList/> */}
+    {/* <Books/> */}
+    {/* <ViDu/> */}
+    <ToDoList2/>
+
 </div>
   );
 }
