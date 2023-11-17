@@ -42,8 +42,9 @@ const ProductList = () => {
                                 <div className="product-img position-relative overflow-hidden">
                                     <img className="img-fluid w-100" src={Urlnumber + product.image} alt="" />
                                     <div className="product-action">
-                                        <a className="btn btn-outline-dark btn-square" href="">
+                                        <a className="btn btn-outline-dark btn-square"  href=''>
                                             <i className="fa fa-shopping-cart" />
+                                          
                                         </a>
                                         <a className="btn btn-outline-dark btn-square" href="">
                                             <i className="far fa-heart" />

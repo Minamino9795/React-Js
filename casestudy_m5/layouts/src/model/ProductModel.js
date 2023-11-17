@@ -1,16 +1,34 @@
 import axios from "axios";
+
 class ProductModel {
-    constructor() {
-        this.api_url = 'http://127.0.0.1:8000/api/products';
-    }
-    all() {
-        return new Promise((resolve, reject) => {
-            axios.get(this.api_url + '/' + id).then((res) => {
-                resolve(res)
-            }).catch((res) => {
-                reject(res);
-            })
-        })
-    }
+  constructor() {
+    this.api_url = "http://127.0.0.1:8000/api/products";
+  }
+
+  async all() {
+    const res = await axios.get(this.api_url);
+    return res.data;
+  }
+
+  async find(id) {
+    const data = await axios.get(this.api_url + '/' + id);
+    return data.data;
+  }
+
+  async store(data) {
+    const res = await axios.post(this.api_url, data);
+    return res;
+  }
+
+  async update(id, data) {
+    const res = await axios.put(this.api_url + '/' + id, data);
+    return res;
+  }
+
+  async delete(id) {
+    const data = await axios.delete(this.api_url + '/' + id);
+    return data;
+  }
 }
-export default new ProductModel;
+
+export default new ProductModel();
