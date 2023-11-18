@@ -54,7 +54,7 @@ function CheckOutForm(props) {
 
   const handleSubmit = (values) => {
     values.cart = cart;
-    values.customer_id = customer.id;
+    values.customerid = customer.id;
     console.log(values);
     OrderModel.checkout(values)
       .then((res) => {
@@ -66,7 +66,7 @@ function CheckOutForm(props) {
         });
         // set local, setcart
         localStorage.removeItem("cart");
-        dispatch({ type: SET_CART, payload: [] });
+        dispatch({ type: SET_CART, payload: [] }); 
         // chuyen huong
         navigate('/');
       })

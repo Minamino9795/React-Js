@@ -5,6 +5,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { NumericFormat } from "react-number-format";
 // import Swal from "sweetalert2";
 import CustomerModel from "../model/CustomerModel";
+import Swal from "sweetalert2";
 
 function Cart(props) {
   const cart = useSelector((state) => state.cart);
@@ -46,12 +47,31 @@ function Cart(props) {
     });
     setIsRemoving(true);
     alert("Xóa sản phẩm ?");
+    Swal.fire({
+      icon: 'success',
+      title: 'Xóa thành công',
+      position: 'top-end', // Hiển thị ở góc trên bên phải
+      showConfirmButton: false,
+      timer: 1500, // Tăng thời gian hiển thị lên 1.5 giây
+      timerProgressBar: true, // Thêm thanh tiến trình thời gian
+      toast: true, // Sử dụng kiểu thông báo "toast"
+      showClass: {
+        popup: 'swal2-noanimation',
+        backdrop: 'swal2-noanimation',
+      },
+      hideClass: {
+        popup: '',
+        backdrop: '',
+      },
+    });
    
   };
 
   const handleCheckout = () => {
+    
     let customer = CustomerModel.getCookie("customer");
     customer = customer ? JSON.parse(customer) : "";
+    
 
     if (!customer) {
       alert("Bạn cần đăng nhập để thanh toán đơn hàng của bạn !");
@@ -69,13 +89,13 @@ function Cart(props) {
           <div className="row px-xl-5">
             <div className="col-12">
               <nav className="breadcrumb bg-light mb-30">
-                <a className="breadcrumb-item text-dark" href="#">
-                  Home
+                <a className="breadcrumb-item text-dark" href="/">
+                  Trang chủ
                 </a>
-                <a className="breadcrumb-item text-dark" href="#">
-                  Shop
+                <a className="breadcrumb-item text-dark" href="/product">
+                  Cửa hàng
                 </a>
-                <span className="breadcrumb-item active">Shopping Cart</span>
+                
               </nav>
             </div>
           </div>
@@ -86,12 +106,12 @@ function Cart(props) {
               <table className="table table-light table-borderless table-hover text-center mb-0">
                 <thead className="thead-dark">
                   <tr>
-                    <th>Image</th>
-                    <th>Products</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
-                    <th>Total</th>
-                    <th>Remove</th>
+                    <th>Ảnh</th>
+                    <th>Tên sản phẩm</th>
+                    <th>Giá</th>
+                    <th>Số lượng</th>
+                    <th>Tổng giá</th>
+                    <th>Tùy chọn</th>
                   </tr>
                 </thead>
                 <tbody className="align-middle">
@@ -162,30 +182,30 @@ function Cart(props) {
                     placeholder="Coupon Code"
                   />
                   <div className="input-group-append">
-                    <button className="btn btn-primary">Apply Coupon</button>
+                    <button className="btn btn-primary">Mã giảm giá</button>
                   </div>
                 </div>
               </form>
               <h5 className="section-title position-relative text-uppercase mb-3">
-                <span className="bg-secondary pr-3">Cart Summary</span>
+                <span className="bg-secondary pr-3">Tóm tắt giỏ hàng</span>
               </h5>
               <div className="bg-light p-30 mb-5">
                 <div className="border-bottom pb-2">
                   <div className="d-flex justify-content-between mb-3">
-                    <h6>Subtotal</h6>
+                    <h6>Tổng phụ</h6>
                     <h6>5.000 VND</h6>
                   </div>
                   <div className="d-flex justify-content-between">
-                    <h6 className="font-weight-medium">Shipping</h6>
+                    <h6 className="font-weight-medium">Phí ship</h6>
                     <h6 className="font-weight-medium">15.000 VND</h6>
                   </div>
                 </div>
                 <div className="pt-2">
                   <div className="d-flex justify-content-between mt-2">
-                    <h5>Total</h5>
+                    <h5>Tổng thanh toán:</h5>
                     <h5>
                       <NumericFormat
-                        value={cartTotal}
+                        value={cartTotal + 20000}
                         allowLeadingZeros
                         thousandSeparator="."
                         decimalSeparator=","
@@ -199,7 +219,7 @@ function Cart(props) {
                     href=""
                     className="btn btn-block btn-primary font-weight-bold my-3 py-3"
                   >
-                    Proceed To Checkout
+                    Thanh toán
                   </button>
                 </div>
               </div>

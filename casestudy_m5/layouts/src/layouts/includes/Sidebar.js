@@ -14,7 +14,7 @@ function Sidebar(props) {
                             >
                                 <h6 className="text-dark m-0">
                                     <i className="fa fa-bars mr-2" />
-                                    Categories
+                                    Danh mục
                                 </h6>
                                 <i className="fa fa-angle-down text-dark" />
                             </a>
@@ -97,14 +97,14 @@ function Sidebar(props) {
                                     id="navbarCollapse"
                                 >
                                     <div className="navbar-nav mr-auto py-0">
-                                        <a href="index.html" className="nav-item nav-link active">
-                                            Home
+                                        <a href="/" className="nav-item nav-link active">
+                                            Trang chủ
                                         </a>
                                         <a href="/product" className="nav-item nav-link">
-                                            Shop
+                                            Cửa hàng
                                         </a>
                                         <a href="detail.html" className="nav-item nav-link">
-                                            Shop Detail
+                                            Chi tiết cửa hàng
                                         </a>
                                         <div className="nav-item dropdown">
                                             <a
@@ -112,19 +112,19 @@ function Sidebar(props) {
                                                 className="nav-link dropdown-toggle"
                                                 data-toggle="dropdown"
                                             >
-                                                Pages <i className="fa fa-angle-down mt-1" />
+                                                Trang <i className="fa fa-angle-down mt-1" />
                                             </a>
                                             <div className="dropdown-menu bg-primary rounded-0 border-0 m-0">
-                                                <a href="cart.html" className="dropdown-item">
-                                                    Shopping Cart
+                                                <a href="/cart" className="dropdown-item">
+                                                   Giỏ hàng
                                                 </a>
-                                                <a href="checkout.html" className="dropdown-item">
-                                                    Checkout
+                                                <a href="/checkout" className="dropdown-item">
+                                                    Thanh toán
                                                 </a>
                                             </div>
                                         </div>
                                         <a href="contact.html" className="nav-item nav-link">
-                                            Contact
+                                            Liên hệ
                                         </a>
                                     </div>
                                     <div className="navbar-nav ml-auto py-0 d-none d-lg-block">
@@ -176,13 +176,13 @@ function Sidebar(props) {
                                     >
                                         <img
                                             className="position-absolute w-100 h-100"
-                                            src="img/carousel-1.jpg"
+                                            src="/img/cau-tao-dong-ho-co.jpg"
                                             style={{ objectFit: "cover" }}
                                         />
                                         <div className="carousel-caption d-flex flex-column align-items-center justify-content-center">
                                             <div className="p-3" style={{ maxWidth: 700 }}>
                                                 <h1 className="display-4 text-white mb-3 animate__animated animate__fadeInDown">
-                                                    Men Fashion
+                                                    Men Watch
                                                 </h1>
                                                 <p className="mx-md-5 px-5 animate__animated animate__bounceIn">
                                                     Lorem rebum magna amet lorem magna erat diam stet. Sadips
@@ -192,7 +192,7 @@ function Sidebar(props) {
                                                     className="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp"
                                                     href="#"
                                                 >
-                                                    Shop Now
+                                                    Mua ngay
                                                 </a>
                                             </div>
                                         </div>
@@ -203,13 +203,13 @@ function Sidebar(props) {
                                     >
                                         <img
                                             className="position-absolute w-100 h-100"
-                                            src="img/carousel-2.jpg"
+                                            src="/img/dh4.webp"
                                             style={{ objectFit: "cover" }}
                                         />
                                         <div className="carousel-caption d-flex flex-column align-items-center justify-content-center">
                                             <div className="p-3" style={{ maxWidth: 700 }}>
                                                 <h1 className="display-4 text-white mb-3 animate__animated animate__fadeInDown">
-                                                    Women Fashion
+                                                    Women Watch
                                                 </h1>
                                                 <p className="mx-md-5 px-5 animate__animated animate__bounceIn">
                                                     Lorem rebum magna amet lorem magna erat diam stet. Sadips
@@ -219,7 +219,7 @@ function Sidebar(props) {
                                                     className="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp"
                                                     href="#"
                                                 >
-                                                    Shop Now
+                                                   Mua ngay
                                                 </a>
                                             </div>
                                         </div>
@@ -230,13 +230,13 @@ function Sidebar(props) {
                                     >
                                         <img
                                             className="position-absolute w-100 h-100"
-                                            src="img/carousel-3.jpg"
+                                            src="/img/dh23.jpg"
                                             style={{ objectFit: "cover" }}
                                         />
                                         <div className="carousel-caption d-flex flex-column align-items-center justify-content-center">
                                             <div className="p-3" style={{ maxWidth: 700 }}>
                                                 <h1 className="display-4 text-white mb-3 animate__animated animate__fadeInDown">
-                                                    Kids Fashion
+                                                    Kids Watch
                                                 </h1>
                                                 <p className="mx-md-5 px-5 animate__animated animate__bounceIn">
                                                     Lorem rebum magna amet lorem magna erat diam stet. Sadips
@@ -246,7 +246,7 @@ function Sidebar(props) {
                                                     className="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp"
                                                     href="#"
                                                 >
-                                                    Shop Now
+                                                    Mua ngay
                                                 </a>
                                             </div>
                                         </div>
@@ -256,22 +256,22 @@ function Sidebar(props) {
                         </div>
                         <div className="col-lg-4">
                             <div className="product-offer mb-30" style={{ height: 200 }}>
-                                <img className="img-fluid" src="img/offer-1.jpg" alt="" />
+                                <img className="img-fluid" src="/img/dh13.jpg" alt="" />
                                 <div className="offer-text">
                                     <h6 className="text-white text-uppercase">Save 20%</h6>
                                     <h3 className="text-white mb-3">Special Offer</h3>
                                     <a href="" className="btn btn-primary">
-                                        Shop Now
+                                        Mua Ngay
                                     </a>
                                 </div>
                             </div>
                             <div className="product-offer mb-30" style={{ height: 200 }}>
-                                <img className="img-fluid" src="img/offer-2.jpg" alt="" />
+                                <img className="img-fluid" src="/img/dh12.jpg" alt="" />
                                 <div className="offer-text">
                                     <h6 className="text-white text-uppercase">Save 20%</h6>
                                     <h3 className="text-white mb-3">Special Offer</h3>
                                     <a href="" className="btn btn-primary">
-                                        Shop Now
+                                        Mua ngay
                                     </a>
                                 </div>
                             </div>
@@ -286,7 +286,7 @@ function Sidebar(props) {
                                 style={{ padding: 30 }}
                             >
                                 <h1 className="fa fa-check text-primary m-0 mr-3" />
-                                <h5 className="font-weight-semi-bold m-0">Quality Product</h5>
+                                <h5 className="font-weight-semi-bold m-0">Sản Phẩm chất lượng</h5>
                             </div>
                         </div>
                         <div className="col-lg-3 col-md-6 col-sm-12 pb-1">
@@ -295,7 +295,7 @@ function Sidebar(props) {
                                 style={{ padding: 30 }}
                             >
                                 <h1 className="fa fa-shipping-fast text-primary m-0 mr-2" />
-                                <h5 className="font-weight-semi-bold m-0">Free Shipping</h5>
+                                <h5 className="font-weight-semi-bold m-0">Miễn phí ship</h5>
                             </div>
                         </div>
                         <div className="col-lg-3 col-md-6 col-sm-12 pb-1">
@@ -304,7 +304,7 @@ function Sidebar(props) {
                                 style={{ padding: 30 }}
                             >
                                 <h1 className="fas fa-exchange-alt text-primary m-0 mr-3" />
-                                <h5 className="font-weight-semi-bold m-0">14-Day Return</h5>
+                                <h5 className="font-weight-semi-bold m-0">Hoàn trả trong 15 ngày</h5>
                             </div>
                         </div>
                         <div className="col-lg-3 col-md-6 col-sm-12 pb-1">
@@ -313,7 +313,7 @@ function Sidebar(props) {
                                 style={{ padding: 30 }}
                             >
                                 <h1 className="fa fa-phone-volume text-primary m-0 mr-3" />
-                                <h5 className="font-weight-semi-bold m-0">24/7 Support</h5>
+                                <h5 className="font-weight-semi-bold m-0">Hỗ trợ 24/7</h5>
                             </div>
                         </div>
                     </div>

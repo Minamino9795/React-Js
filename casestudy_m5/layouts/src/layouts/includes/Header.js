@@ -8,16 +8,16 @@ function Header(props) {
                     <div className="col-lg-6 d-none d-lg-block">
                         <div className="d-inline-flex align-items-center h-100">
                             <a className="text-body mr-3" href="">
-                                About
+                                Quay về
                             </a>
                             <a className="text-body mr-3" href="">
-                                Contact
+                                Liên hệ
                             </a>
                             <a className="text-body mr-3" href="">
-                                Help
+                                Trợ giúp
                             </a>
                             <a className="text-body mr-3" href="">
-                                FAQs
+                                Câu hỏi thường gặp
                             </a>
                         </div>
                     </div>
@@ -29,15 +29,21 @@ function Header(props) {
                                     className="btn btn-sm btn-light dropdown-toggle"
                                     data-toggle="dropdown"
                                 >
-                                    My Account
+                                    Tài khoản
                                 </button>
                                 <div className="dropdown-menu dropdown-menu-right">
+                                    <a href="/login">
+
                                     <button className="dropdown-item" type="button">
-                                        Sign in
+                                        Đăng nhập
                                     </button>
+                                    </a>
+                                    <a href="/register">
+
                                     <button className="dropdown-item" type="button">
-                                        Sign up
+                                        Đăng ký
                                     </button>
+                                    </a>
                                 </div>
                             </div>
                             <div className="btn-group mx-2">
@@ -97,7 +103,7 @@ function Header(props) {
                                     className="badge text-dark border border-dark rounded-circle"
                                     style={{ paddingBottom: 2 }}
                                 >
-                                    0
+                                    Ơ
                                 </span>
                             </a>
                         </div>
@@ -107,10 +113,10 @@ function Header(props) {
                     <div className="col-lg-4">
                         <a href="" className="text-decoration-none">
                             <span className="h1 text-uppercase text-primary bg-dark px-2">
-                                Multi
+                            Watch
                             </span>
                             <span className="h1 text-uppercase text-dark bg-primary px-2 ml-n1">
-                                Shop
+                            Men97
                             </span>
                         </a>
                     </div>
@@ -122,7 +128,7 @@ function Header(props) {
                                     type="text"
                                     className="form-control"
                                     name="search"
-                                    placeholder="Search for products"
+                                    placeholder="Nhập từ tìm kiếm"
                                 />
                                 <div className="input-group-append">
                                     <button type="submit" className="btn btn-primary">
@@ -134,8 +140,8 @@ function Header(props) {
                     </div>
 
                     <div className="col-lg-4 col-6 text-right">
-                        <p className="m-0">Customer Service</p>
-                        <h5 className="m-0">+012 345 6789</h5>
+                        <p className="m-0">Dương Đình Nghĩa</p>
+                        <h5 className="m-0">+374 180 497</h5>
                     </div>
                 </div>
             </div>

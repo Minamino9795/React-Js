@@ -28,19 +28,43 @@ function LogInForm(props) {
             })
             .catch((err) => {
                 Swal.fire({
-                    icon: "error",
-                    title: "Thất bại !",
-                    
-                });
+                    icon: 'error',
+                    title: 'Đăng nhập thất bại',
+                  
+                    showConfirmButton: false,
+                    timer: 1500, // Tăng thời gian hiển thị lên 1.5 giây
+                    timerProgressBar: true, // Thêm thanh tiến trình thời gian
+                    toast: true, // Sử dụng kiểu thông báo "toast"
+                    showClass: {
+                      popup: 'swal2-noanimation',
+                      backdrop: 'swal2-noanimation',
+                    },
+                    hideClass: {
+                      popup: '',
+                      backdrop: '',
+                    },
+                  });
             });
     };
     const handleLoginSuccess = () => {
         Swal.fire({
-            icon: "success",
-            title: "Đăng nhập thành công!",
+            icon: 'success',
+            title: 'Đăng nhập thành công',
+            position: 'top-end', // Hiển thị ở góc trên bên phải
             showConfirmButton: false,
-            timer: 1500,
-        });
+            timer: 1500, // Tăng thời gian hiển thị lên 1.5 giây
+            timerProgressBar: true, // Thêm thanh tiến trình thời gian
+            iconColor: '#00a65a', 
+            toast: true,// Sử dụng kiểu thông báo "toast"
+            showClass: {
+              popup: 'swal2-noanimation',
+              backdrop: 'swal2-noanimation',
+            },
+            hideClass: {
+              popup: '',
+              backdrop: '',
+            },
+          });
     };
 
     return (
@@ -50,10 +74,21 @@ function LogInForm(props) {
             onSubmit={handleSubmit}
         >
             <Form clasName="login">
-                @csrf
+              
                 <div className="d-flex align-items-center mb-3 pb-1">
-                    <i className="fas fa-cubes fa-2x me-3" style={{ color: "#ff6219" }} />
-                    <span className="h1 fw-bold mb-0">Logo</span>
+                    
+                    <span className="h1 fw-bold mb-0">
+                    <div className="">
+                        <a href="" className="text-decoration-none">
+                            <span className="h1 text-uppercase text-primary bg-dark px-2">
+                            Watch
+                            </span>
+                            <span className="h1 text-uppercase text-dark bg-primary px-2 ml-n1">
+                            Men97
+                            </span>
+                        </a>
+                    </div>
+                    </span>
                 </div>
                 <h5 className="fw-normal mb-3 pb-3" style={{ letterSpacing: 1 }}>
                     Sign into your account
@@ -64,6 +99,8 @@ function LogInForm(props) {
                         id="form2Example17"
                         name="email"
                         className="form-control form-control-lg"
+                        placeholder="Nhập địa chỉ email"
+                        
                     />
                     <label className="form-label" htmlFor="form2Example17">
                         Email
@@ -75,16 +112,17 @@ function LogInForm(props) {
                         id="form2Example27"
                         name="password"
                         className="form-control form-control-lg"
+                        placeholder="Nhập password"
                     />
                     <label className="form-label" htmlFor="form2Example27">
                         Password
                     </label>
                 </div>
                 <div className="pt-1 mb-4">
-                    <button className="btn btn-dark btn-lg btn-block" type="submit">
+                    <button className="btn btn-danger btn-lg btn-block" type="submit">
                         Login
                     </button>
-                    <Link className="btn btn-success btn-lg btn-block" to="/register">
+                    <Link className="btn btn-info btn-lg btn-block" to="/register">
                         Register
                     </Link>
                 </div>
@@ -97,12 +135,7 @@ function LogInForm(props) {
                         Register here
                     </a>
                 </p>
-                <a href="#!" className="small text-muted">
-                    Terms of use.
-                </a>
-                <a href="#!" className="small text-muted">
-                    Privacy policy
-                </a>
+               
             </Form>
         </Formik>
     );

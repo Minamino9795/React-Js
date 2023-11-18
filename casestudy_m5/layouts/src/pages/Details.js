@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, Navigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { NumericFormat } from "react-number-format";
 import ProductModel from "../model/ProductModel";
 import { SET_CART } from "../redux/action";
 import MasterLayout from "../layouts/MasterLayout";
+import Swal from "sweetalert2";
+
 
 function Detail(props) {
   const cart = useSelector((state) => state.cart);
@@ -41,6 +43,48 @@ function Detail(props) {
     localStorage.setItem('cart', JSON.stringify(newCart));
     dispatch({ type: SET_CART, payload: newCart });
 
+    Swal.fire({
+      icon: 'success',
+      title: 'Thêm thành công',
+      position: 'top-end', // Hiển thị ở góc trên bên phải
+      showConfirmButton: false,
+      timer: 1500, // Tăng thời gian hiển thị lên 1.5 giây
+      timerProgressBar: true, // Thêm thanh tiến trình thời gian
+      toast: true, // Sử dụng kiểu thông báo "toast"
+      iconColor: '#00a65a',
+      showClass: {
+        popup: 'swal2-noanimation',
+        backdrop: 'swal2-noanimation',
+      },
+      hideClass: {
+        popup: '',
+        backdrop: '',
+      },
+    });
+
+  };
+  const handleBuyNow = () => {
+    let item = {
+      id: id,
+      quantity: count,
+      product: product,
+    };
+    let update = false;
+    for (let index = 0; index < cart.length; index++) {
+      const element = cart[index];
+      if (element.id == id) {
+        update = true;
+        cart[index].quantity = cart[index].quantity + count;
+      }
+    }
+    if (update) {
+      var newCart = [...cart];
+    } else {
+      var newCart = [...cart, item];
+    }
+    localStorage.setItem('cart', JSON.stringify(newCart));
+    window.location.href = '/cart';
+
 
   };
 
@@ -62,13 +106,12 @@ function Detail(props) {
           <div className="row px-xl-5">
             <div className="col-12">
               <nav className="breadcrumb bg-light mb-30">
-                <a className="breadcrumb-item text-dark" href="#">
-                  Home
+                <a className="breadcrumb-item text-dark" href="/">
+                  Trang chủ
                 </a>
-                <a className="breadcrumb-item text-dark" href="#">
-                  Shop
+                <a className="breadcrumb-item text-dark" href="/product">
+                  Cửa hàng
                 </a>
-                <span className="breadcrumb-item active">Shop Detail</span>
               </nav>
             </div>
           </div>
@@ -89,6 +132,7 @@ function Detail(props) {
                         src={image + product.image}
                         alt="Image"
                       />
+                      
                     </div>
                   </div>
                   <a
@@ -115,13 +159,16 @@ function Detail(props) {
                       <small className="fas fa-star" />
                       <small className="fas fa-star" />
                       <small className="fas fa-star" />
+                      <small className="fas fa-star" />
                       <small className="fas fa-star-half-alt" />
-                      <small className="far fa-star" />
+                      {/* <small className="far fa-star" /> */}
                     </div>
-                    <small className="pt-1">(99 Reviews)</small>
+                    <small className="pt-1">(1,8k Reviews)</small>
                   </div>
                   <h3 className="font-weight-semi-bold mb-4">
+
                     <NumericFormat
+
                       value={product.price}
                       allowLeadingZeros
                       thousandSeparator="."
@@ -130,10 +177,14 @@ function Detail(props) {
                     />{" "}
                     VND
                   </h3>
+
                   <p
                     className="mb-4"
-                    dangerouslySetInnerHTML={{ __html: product.description }}
+                    dangerouslySetInnerHTML={{ __html: product.decscription }}
                   ></p>
+                  <p>
+                    <h4>Số lượng: {product.quantity}</h4>
+                  </p>
 
                   <div className="d-flex align-items-center mb-4 pt-2">
                     <div
@@ -168,266 +219,36 @@ function Detail(props) {
                         </button>
                       </div>
                     </div>
+                    <div className="btn-group">
                     <button
                       onClick={handleAddToCart}
-                      className="btn btn-primary px-3"
-                    >
-                      <i className="fa fa-shopping-cart mr-1" /> Add To Cart
+                      className="btn btn-outline-warning">
+                      <i className="fa fa-shopping-cart mr-1" /> Thêm vào giỏ hàng
                     </button>
+                    &nbsp;
+                      <button
+                        onClick={handleBuyNow}
+                        className="btn btn-success px-3">
+                        <i className="fas fa-credit-card"></i> Mua ngay
+                      </button>
+                    </div>
+
                   </div>
                   <div className="d-flex pt-2">
                     <strong className="text-dark mr-2">Share on:</strong>
                     <div className="d-inline-flex">
-                      <a className="text-dark px-2" href="">
+                      <a className="text-info px-2" href="">
                         <i className="fab fa-facebook-f" />
                       </a>
-                      <a className="text-dark px-2" href="">
+                      <a className="text-info px-2" href="">
                         <i className="fab fa-twitter" />
                       </a>
-                      <a className="text-dark px-2" href="">
+                      <a className="text-info px-2" href="">
                         <i className="fab fa-linkedin-in" />
                       </a>
-                      <a className="text-dark px-2" href="">
+                      <a className="text-danger px-2" href="">
                         <i className="fab fa-pinterest" />
                       </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          {/* Shop Detail End */}
-          {/* Products Start */}
-          <div className="container-fluid py-5">
-            <h2 className="section-title position-relative text-uppercase mx-xl-5 mb-4">
-              <span className="bg-secondary pr-3">You May Also Like</span>
-            </h2>
-            <div className="row px-xl-5">
-              <div className="col">
-                <div className="owl-carousel related-carousel">
-                  <div className="product-item bg-light">
-                    <div className="product-img position-relative overflow-hidden">
-                      <img
-                        className="img-fluid w-100"
-                        src="img/product-1.jpg"
-                        alt=""
-                      />
-                      <div className="product-action">
-                        <a className="btn btn-outline-dark btn-square" href="">
-                          <i className="fa fa-shopping-cart" />
-                        </a>
-                        <a className="btn btn-outline-dark btn-square" href="">
-                          <i className="far fa-heart" />
-                        </a>
-                        <a className="btn btn-outline-dark btn-square" href="">
-                          <i className="fa fa-sync-alt" />
-                        </a>
-                        <a className="btn btn-outline-dark btn-square" href="">
-                          <i className="fa fa-search" />
-                        </a>
-                      </div>
-                    </div>
-                    <div className="text-center py-4">
-                      <a
-                        className="h6 text-decoration-none text-truncate"
-                        href=""
-                      >
-                        Product Name Goes Here
-                      </a>
-                      <div className="d-flex align-items-center justify-content-center mt-2">
-                        <h5>$123.00</h5>
-                        <h6 className="text-muted ml-2">
-                          <del>$123.00</del>
-                        </h6>
-                      </div>
-                      <div className="d-flex align-items-center justify-content-center mb-1">
-                        <small className="fa fa-star text-primary mr-1" />
-                        <small className="fa fa-star text-primary mr-1" />
-                        <small className="fa fa-star text-primary mr-1" />
-                        <small className="fa fa-star text-primary mr-1" />
-                        <small className="fa fa-star text-primary mr-1" />
-                        <small>(99)</small>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="product-item bg-light">
-                    <div className="product-img position-relative overflow-hidden">
-                      <img
-                        className="img-fluid w-100"
-                        src="img/product-2.jpg"
-                        alt=""
-                      />
-                      <div className="product-action">
-                        <a className="btn btn-outline-dark btn-square" href="">
-                          <i className="fa fa-shopping-cart" />
-                        </a>
-                        <a className="btn btn-outline-dark btn-square" href="">
-                          <i className="far fa-heart" />
-                        </a>
-                        <a className="btn btn-outline-dark btn-square" href="">
-                          <i className="fa fa-sync-alt" />
-                        </a>
-                        <a className="btn btn-outline-dark btn-square" href="">
-                          <i className="fa fa-search" />
-                        </a>
-                      </div>
-                    </div>
-                    <div className="text-center py-4">
-                      <a
-                        className="h6 text-decoration-none text-truncate"
-                        href=""
-                      >
-                        Product Name Goes Here
-                      </a>
-                      <div className="d-flex align-items-center justify-content-center mt-2">
-                        <h5>$123.00</h5>
-                        <h6 className="text-muted ml-2">
-                          <del>$123.00</del>
-                        </h6>
-                      </div>
-                      <div className="d-flex align-items-center justify-content-center mb-1">
-                        <small className="fa fa-star text-primary mr-1" />
-                        <small className="fa fa-star text-primary mr-1" />
-                        <small className="fa fa-star text-primary mr-1" />
-                        <small className="fa fa-star text-primary mr-1" />
-                        <small className="fa fa-star text-primary mr-1" />
-                        <small>(99)</small>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="product-item bg-light">
-                    <div className="product-img position-relative overflow-hidden">
-                      <img
-                        className="img-fluid w-100"
-                        src="img/product-3.jpg"
-                        alt=""
-                      />
-                      <div className="product-action">
-                        <a className="btn btn-outline-dark btn-square" href="">
-                          <i className="fa fa-shopping-cart" />
-                        </a>
-                        <a className="btn btn-outline-dark btn-square" href="">
-                          <i className="far fa-heart" />
-                        </a>
-                        <a className="btn btn-outline-dark btn-square" href="">
-                          <i className="fa fa-sync-alt" />
-                        </a>
-                        <a className="btn btn-outline-dark btn-square" href="">
-                          <i className="fa fa-search" />
-                        </a>
-                      </div>
-                    </div>
-                    <div className="text-center py-4">
-                      <a
-                        className="h6 text-decoration-none text-truncate"
-                        href=""
-                      >
-                        Product Name Goes Here
-                      </a>
-                      <div className="d-flex align-items-center justify-content-center mt-2">
-                        <h5>$123.00</h5>
-                        <h6 className="text-muted ml-2">
-                          <del>$123.00</del>
-                        </h6>
-                      </div>
-                      <div className="d-flex align-items-center justify-content-center mb-1">
-                        <small className="fa fa-star text-primary mr-1" />
-                        <small className="fa fa-star text-primary mr-1" />
-                        <small className="fa fa-star text-primary mr-1" />
-                        <small className="fa fa-star text-primary mr-1" />
-                        <small className="fa fa-star text-primary mr-1" />
-                        <small>(99)</small>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="product-item bg-light">
-                    <div className="product-img position-relative overflow-hidden">
-                      <img
-                        className="img-fluid w-100"
-                        src="img/product-4.jpg"
-                        alt=""
-                      />
-                      <div className="product-action">
-                        <a className="btn btn-outline-dark btn-square" href="">
-                          <i className="fa fa-shopping-cart" />
-                        </a>
-                        <a className="btn btn-outline-dark btn-square" href="">
-                          <i className="far fa-heart" />
-                        </a>
-                        <a className="btn btn-outline-dark btn-square" href="">
-                          <i className="fa fa-sync-alt" />
-                        </a>
-                        <a className="btn btn-outline-dark btn-square" href="">
-                          <i className="fa fa-search" />
-                        </a>
-                      </div>
-                    </div>
-                    <div className="text-center py-4">
-                      <a
-                        className="h6 text-decoration-none text-truncate"
-                        href=""
-                      >
-                        Product Name Goes Here
-                      </a>
-                      <div className="d-flex align-items-center justify-content-center mt-2">
-                        <h5>$123.00</h5>
-                        <h6 className="text-muted ml-2">
-                          <del>$123.00</del>
-                        </h6>
-                      </div>
-                      <div className="d-flex align-items-center justify-content-center mb-1">
-                        <small className="fa fa-star text-primary mr-1" />
-                        <small className="fa fa-star text-primary mr-1" />
-                        <small className="fa fa-star text-primary mr-1" />
-                        <small className="fa fa-star text-primary mr-1" />
-                        <small className="fa fa-star text-primary mr-1" />
-                        <small>(99)</small>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="product-item bg-light">
-                    <div className="product-img position-relative overflow-hidden">
-                      <img
-                        className="img-fluid w-100"
-                        src="img/product-5.jpg"
-                        alt=""
-                      />
-                      <div className="product-action">
-                        <a className="btn btn-outline-dark btn-square" href="">
-                          <i className="fa fa-shopping-cart" />
-                        </a>
-                        <a className="btn btn-outline-dark btn-square" href="">
-                          <i className="far fa-heart" />
-                        </a>
-                        <a className="btn btn-outline-dark btn-square" href="">
-                          <i className="fa fa-sync-alt" />
-                        </a>
-                        <a className="btn btn-outline-dark btn-square" href="">
-                          <i className="fa fa-search" />
-                        </a>
-                      </div>
-                    </div>
-                    <div className="text-center py-4">
-                      <a
-                        className="h6 text-decoration-none text-truncate"
-                        href=""
-                      >
-                        Product Name Goes Here
-                      </a>
-                      <div className="d-flex align-items-center justify-content-center mt-2">
-                        <h5>$123.00</h5>
-                        <h6 className="text-muted ml-2">
-                          <del>$123.00</del>
-                        </h6>
-                      </div>
-                      <div className="d-flex align-items-center justify-content-center mb-1">
-                        <small className="fa fa-star text-primary mr-1" />
-                        <small className="fa fa-star text-primary mr-1" />
-                        <small className="fa fa-star text-primary mr-1" />
-                        <small className="fa fa-star text-primary mr-1" />
-                        <small className="fa fa-star text-primary mr-1" />
-                        <small>(99)</small>
-                      </div>
                     </div>
                   </div>
                 </div>

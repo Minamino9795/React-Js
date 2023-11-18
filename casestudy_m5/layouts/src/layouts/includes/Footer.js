@@ -7,24 +7,24 @@ function Footer(props) {
                     <div className="row px-xl-5">
                         <div className="col-md-6">
                             <div className="product-offer mb-30" style={{ height: 300 }}>
-                                <img className="img-fluid" src="img/offer-1.jpg" alt="" />
+                                <img className="img-fluid" src="/img/dh24.webp" alt="" />
                                 <div className="offer-text">
                                     <h6 className="text-white text-uppercase">Save 20%</h6>
                                     <h3 className="text-white mb-3">Special Offer</h3>
                                     <a href="" className="btn btn-primary">
-                                        Shop Now
+                                        Mua ngay
                                     </a>
                                 </div>
                             </div>
                         </div>
                         <div className="col-md-6">
                             <div className="product-offer mb-30" style={{ height: 300 }}>
-                                <img className="img-fluid" src="img/offer-2.jpg" alt="" />
+                                <img className="img-fluid" src="/img/dh14.jpeg" alt="" />
                                 <div className="offer-text">
                                     <h6 className="text-white text-uppercase">Save 20%</h6>
                                     <h3 className="text-white mb-3">Special Offer</h3>
                                     <a href="" className="btn btn-primary">
-                                        Shop Now
+                                    Mua ngay
                                     </a>
                                 </div>
                             </div>
@@ -36,28 +36,28 @@ function Footer(props) {
                         <div className="col">
                             <div className="owl-carousel vendor-carousel">
                                 <div className="bg-light p-4">
-                                    <img src="%img/vendor-1.jpg" alt="" />
+                                    <img src="/%img/vendor-1.jpg" alt="" />
                                 </div>
                                 <div className="bg-light p-4">
-                                    <img src="img/vendor-2.jpg" alt="" />
+                                    <img src="/img/vendor-2.jpg" alt="" />
                                 </div>
                                 <div className="bg-light p-4">
-                                    <img src="img/vendor-3.jpg" alt="" />
+                                    <img src="/img/vendor-3.jpg" alt="" />
                                 </div>
                                 <div className="bg-light p-4">
-                                    <img src="img/vendor-4.jpg" alt="" />
+                                    <img src="/img/vendor-4.jpg" alt="" />
                                 </div>
                                 <div className="bg-light p-4">
-                                    <img src="img/vendor-5.jpg" alt="" />
+                                    <img src="/img/vendor-5.jpg" alt="" />
                                 </div>
                                 <div className="bg-light p-4">
-                                    <img src="img/vendor-6.jpg" alt="" />
+                                    <img src="/img/vendor-6.jpg" alt="" />
                                 </div>
                                 <div className="bg-light p-4">
-                                    <img src="img/vendor-7.jpg" alt="" />
+                                    <img src="/img/vendor-7.jpg" alt="" />
                                 </div>
                                 <div className="bg-light p-4">
-                                    <img src="img/vendor-8.jpg" alt="" />
+                                    <img src="/img/vendor-8.jpg" alt="" />
                                 </div>
                             </div>
                         </div>
@@ -66,7 +66,7 @@ function Footer(props) {
                 <div className="container-fluid bg-dark text-secondary mt-5 pt-5">
                     <div className="row px-xl-5 pt-5">
                         <div className="col-lg-4 col-md-12 mb-5 pr-3 pr-xl-5">
-                            <h5 className="text-secondary text-uppercase mb-4">Get In Touch</h5>
+                            <h5 className="text-secondary text-uppercase mb-4">Liên hệ</h5>
                             <p className="mb-4">
                                 No dolore ipsum accusam no lorem. Invidunt sed clita kasd clita et et
                                 dolor sed dolor. Rebum tempor no vero est magna amet no
@@ -87,31 +87,31 @@ function Footer(props) {
                         <div className="col-lg-8 col-md-12">
                             <div className="row">
                                 <div className="col-md-4 mb-5">
-                                    <h5 className="text-secondary text-uppercase mb-4">Quick Shop</h5>
+                                    <h5 className="text-secondary text-uppercase mb-4">Cửa hàng nhanh</h5>
                                     <div className="d-flex flex-column justify-content-start">
                                         <a className="text-secondary mb-2" href="#">
                                             <i className="fa fa-angle-right mr-2" />
-                                            Home
+                                            Trang chủ
                                         </a>
                                         <a className="text-secondary mb-2" href="#">
                                             <i className="fa fa-angle-right mr-2" />
-                                            Our Shop
+                                            Cửa hàng
                                         </a>
                                         <a className="text-secondary mb-2" href="#">
                                             <i className="fa fa-angle-right mr-2" />
-                                            Shop Detail
+                                            Chi tết của hàng
                                         </a>
                                         <a className="text-secondary mb-2" href="#">
                                             <i className="fa fa-angle-right mr-2" />
-                                            Shopping Cart
+                                            Giỏ hàng
                                         </a>
                                         <a className="text-secondary mb-2" href="#">
                                             <i className="fa fa-angle-right mr-2" />
-                                            Checkout
+                                            Thanh toán
                                         </a>
                                         <a className="text-secondary" href="#">
                                             <i className="fa fa-angle-right mr-2" />
-                                            Contact Us
+                                           Liên hệ chúng tôi
                                         </a>
                                     </div>
                                 </div>
@@ -120,47 +120,47 @@ function Footer(props) {
                                     <div className="d-flex flex-column justify-content-start">
                                         <a className="text-secondary mb-2" href="#">
                                             <i className="fa fa-angle-right mr-2" />
-                                            Home
+                                            Trang chủ
                                         </a>
                                         <a className="text-secondary mb-2" href="#">
                                             <i className="fa fa-angle-right mr-2" />
-                                            Our Shop
+                                            Cửa hàng
                                         </a>
                                         <a className="text-secondary mb-2" href="#">
                                             <i className="fa fa-angle-right mr-2" />
-                                            Shop Detail
+                                            Chi tết của hàng
                                         </a>
                                         <a className="text-secondary mb-2" href="#">
                                             <i className="fa fa-angle-right mr-2" />
-                                            Shopping Cart
+                                            Giỏ hàng
                                         </a>
                                         <a className="text-secondary mb-2" href="#">
                                             <i className="fa fa-angle-right mr-2" />
-                                            Checkout
+                                          Thanh toán
                                         </a>
                                         <a className="text-secondary" href="#">
                                             <i className="fa fa-angle-right mr-2" />
-                                            Contact Us
+                                           Liên hệ với chúng tôi
                                         </a>
                                     </div>
                                 </div>
                                 <div className="col-md-4 mb-5">
-                                    <h5 className="text-secondary text-uppercase mb-4">Newsletter</h5>
+                                    <h5 className="text-secondary text-uppercase mb-4">Bản tin</h5>
                                     <p>Duo stet tempor ipsum sit amet magna ipsum tempor est</p>
                                     <form action="">
                                         <div className="input-group">
                                             <input
                                                 type="text"
                                                 className="form-control"
-                                                placeholder="Your Email Address"
+                                                placeholder="Nhập địa chỉ email"
                                             />
                                             <div className="input-group-append">
-                                                <button className="btn btn-primary">Sign Up</button>
+                                                <button className="btn btn-primary">Dăng ký</button>
                                             </div>
                                         </div>
                                     </form>
                                     <h6 className="text-secondary text-uppercase mt-4 mb-3">
-                                        Follow Us
+                                        Theo dõi chúng tôi
                                     </h6>
                                     <div className="d-flex">
                                         <a className="btn btn-primary btn-square mr-2" href="#">
@@ -197,7 +197,7 @@ function Footer(props) {
                             </p>
                         </div>
                         <div className="col-md-6 px-xl-0 text-center text-md-right">
-                            <img className="img-fluid" src="img/payments.png" alt="" />
+                            <img className="img-fluid" src="/img/payments.png" alt="" />
                         </div>
                     </div>
                 </div>
