@@ -6,6 +6,7 @@ import { NumericFormat } from "react-number-format";
 // import Swal from "sweetalert2";
 import CustomerModel from "../model/CustomerModel";
 import Swal from "sweetalert2";
+import OrderModel from "../model/OrderModel";
 
 function Cart(props) {
   const cart = useSelector((state) => state.cart);
@@ -67,11 +68,12 @@ function Cart(props) {
    
   };
 
+
+
   const handleCheckout = () => {
-    
     let customer = CustomerModel.getCookie("customer");
     customer = customer ? JSON.parse(customer) : "";
-    
+    // console.log(customer);
 
     if (!customer) {
       alert("Bạn cần đăng nhập để thanh toán đơn hàng của bạn !");
@@ -82,6 +84,8 @@ function Cart(props) {
       navigate("/checkout");
     }
   };
+  
+  
   return (
     <>
       <>
@@ -163,9 +167,11 @@ function Cart(props) {
                       <td className="align-middle">
                         <button
                           onClick={() => handleRemove(index)}
-                          className="btn btn-sm btn-danger"
+                          class="btn btn-outline-dark"
                         >
-                          <i className="fa fa-times" />
+                          <i className="fa fa-trash-alt" />
+
+
                         </button>
                       </td>
                     </tr>

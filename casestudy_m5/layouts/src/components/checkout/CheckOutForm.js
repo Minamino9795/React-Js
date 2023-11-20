@@ -45,6 +45,7 @@ function CheckOutForm(props) {
 
   useEffect(() => {
     const customerCookie = CustomerModel.getCookie("customer");
+    // console.log(customerCookie);
     if (customerCookie) {
       const customerData = JSON.parse(customerCookie);
       setCustomer(customerData);
@@ -54,10 +55,11 @@ function CheckOutForm(props) {
 
   const handleSubmit = (values) => {
     values.cart = cart;
-    values.customerid = customer.id;
-    console.log(values);
+    values.customer_id = customer.id;
+    // console.log(values);
     OrderModel.checkout(values)
       .then((res) => {
+       
         Swal.fire({
           icon: "success",
           title: "Thanh toán thành công!",
@@ -66,11 +68,12 @@ function CheckOutForm(props) {
         });
         // set local, setcart
         localStorage.removeItem("cart");
-        dispatch({ type: SET_CART, payload: [] }); 
+        dispatch({ type: SET_CART, payload: [] });
         // chuyen huong
         navigate('/');
       })
       .catch((err) => {
+        console.error(err)
         Swal.fire({
           icon: "error",
           title: "Thanh toán thất bại!",
@@ -79,7 +82,6 @@ function CheckOutForm(props) {
         });
       });
   };
-
   return (
     <Formik
       enableReinitialize={true}

@@ -1,21 +1,22 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { NumericFormat } from "react-number-format";
 import ProductModel from "../../model/ProductModel";
+import axios from "axios";
 // import MasterLayout from "../../layouts/MasterLayout";
 
 function YourOrder(props) {
   const [products, setProducts] = useState([]);
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
+  // console.log(products);
 
   useEffect(() => {
-    ProductModel.all()
-      .then((res) => {
-        setProducts(res.data);
-        // console.log(res.data);
-      })
+    axios.get('http://127.0.0.1:8000/api/products')
+            .then(res => {
+                setProducts(res.data);
+                console.log(res);
+            })
       .catch((err) => {
         throw err;
       });
@@ -36,7 +37,6 @@ function YourOrder(props) {
   );
 
   return (
-   
     <div className="col-lg-4">
       <h5 className="section-title position-relative text-uppercase mb-3">
         <span className="bg-secondary pr-3">Order Total</span>
@@ -89,5 +89,6 @@ function YourOrder(props) {
     </div>
   );
 }
+
 
 export default YourOrder;
