@@ -15,6 +15,10 @@ const rules = Yup.object().shape({
     stock: Yup.string()
         .min(2, "Too Short!")
         .max(50, "Too Long!")
+        .required("Required"),
+    description: Yup.string()
+        .min(2, "Too Short!")
+        .max(50, "Too Long!")
         .required("Required")
 });
 function Create(props) {
@@ -24,7 +28,8 @@ function Create(props) {
     const [formData, setFormData] = useState({
         'name': '',
         'price': '',
-        'stock': ''
+        'stock': '',
+        'description': '',
     })
     const handleSubmit = (values) => {
         // console.log(values);
@@ -38,8 +43,8 @@ function Create(props) {
         })
     }
     return (
-        <div>
-            <h1>Create</h1>
+        <div className="form-container">
+            <h1>Thêm sản phẩm</h1>
             <Formik
                 initialValues={formData}
                 validationSchema={rules}
@@ -47,25 +52,33 @@ function Create(props) {
             >
                 {({ errors, touched }) => (
                     <Form>
-                        <label htmlFor="name">Name</label>
-                        <Field name="name" />
+                        <label htmlFor="name">Tên Sản phẩm</label>
+                        <Field name="name" className="input-field" />
                         {errors.name && touched.name ? (
-                            <div>{errors.name}</div>
+                            <div className="error-message">{errors.name}</div>
                         ) : null}
                         <br />
-                        <label htmlFor="price">Price</label>
-                        <Field name="price" />
+                        <label htmlFor="price">Giá</label>
+                        <Field name="price" className="input-field"/>
                         {errors.price && touched.price ? (
-                            <div>{errors.price}</div>
+                            <div className="error-message">{errors.price}</div>
                         ) : null}
                         <br />
-                        <label htmlFor="stock">Stock</label>
-                        <Field name="stock" />
+                        <label htmlFor="stock">Tồn kho</label>
+                        <Field name="stock" className="input-field" />
                         {errors.stock && touched.stock ? (
-                            <div>{errors.stock}</div>
+                            <div className="error-message">{errors.stock}</div>
                         ) : null}
+                         <br />
+                        <label htmlFor="description">Mô tả</label>
+                        <Field name="description" className="input-field"/>
+                        {errors.description && touched.description ? (
+                            <div className="error-message">{errors.description}</div>
+                        ) : null}
+
                         <br />
-                        <button type="submit">Submit</button>
+                        <button type="submit">Thêm</button>
+                       
                     </Form>
                 )}
             </Formik>

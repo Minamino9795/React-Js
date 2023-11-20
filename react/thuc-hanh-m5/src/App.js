@@ -3,6 +3,7 @@ import './App.css';
 import ListFashion from './components/Fashion/list';
 import Create from './components/Fashion/create';
 import Edit from './components/Fashion/Edit';
+import Show from './components/Fashion/show';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Route path="/" element={<ListFashion/>} />
       <Route path="/create" element={<Create/>} />
       <Route path="/edit/:id" element={<Edit />} />
+      <Route path="/show/:id" element={<Show />} />
 
 
       </Routes>

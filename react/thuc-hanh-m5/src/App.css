@@ -36,3 +36,108 @@
     transform: rotate(360deg);
   }
 }
+
+
+/* Các kiểu chung cho biểu mẫu */
+.form-container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Kiểu cho tiêu đề */
+.form-container h1 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Kiểu cho nhãn và input */
+.form-container label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 16px;
+}
+
+.form-container input,
+.form-container textarea {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/* Kiểu cho thông báo lỗi */
+.error-message {
+  color: #ff0000;
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+
+
+
+
+
+/* Kiểu chung cho danh sách sản phẩm */
+.list-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Kiểu cho tiêu đề danh sách sản phẩm */
+.list-container h1 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Kiểu cho liên kết "Create" */
+.list-container a {
+  display: inline-block;
+  margin-bottom: 20px;
+  padding: 8px 12px;
+  background-color: #4caf50;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.list-container a:hover {
+  background-color: #45a049;
+}
+
+/* Kiểu cho bảng danh sách sản phẩm */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.table th, .table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.table th {
+  background-color: #f2f2f2;
+}
+
+/* Kiểu cho các liên kết tùy chọn */
+.table a {
+  color: #333;
+  text-decoration: none;
+  margin-right: 8px;
+}
+
+.table a:hover {
+  text-decoration: underline;
+  color: #000;
+}
+

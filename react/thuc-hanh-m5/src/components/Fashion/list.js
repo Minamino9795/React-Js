@@ -25,19 +25,18 @@ function ListFashion(props) {
 
 
     return (
-        <div>
+        <div className="list-container">
 
-            <h1>Library</h1>
-            <Link to={'/create'}>Create</Link>
+            <h1>Danh Sách Sản Phẩm</h1>
+            <Link to={'/create'} className="create-link">Create</Link>
             <table className="table" border={1}>
                 <thead>
                     <tr>
                         <th>#</th>
                         <th>Tên sản phẩm</th>
-                        <th>Giá</th>
+                        <th>Giá(đ)</th>
                         <th>Tồn kho</th>
-                        <th>Action</th>
-                        <th>Action</th>
+                        <th>Tùy chọn</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -48,8 +47,10 @@ function ListFashion(props) {
                                 <td> {item.name} </td>
                                 <td> {item.price} </td>
                                 <td> {item.stock} </td>
-                                <td> <Link to={'edit/' + item.id}>Edit</Link> </td>
-                                <td><Link onClick={() => handleDelete(item.id)}>Xóa</Link></td>
+                                <td> <Link to={'edit/' + item.id} className="edit-button">Sửa </Link>  
+                                | <Link onClick={() => handleDelete(item.id)} className="delete-button">Xóa</Link> | 
+                                 <Link to={'show/' + item.id} className="show-button">Xem </Link>  
+                                 </td>
 
                             </tr>
                         )) : ''
