@@ -32,7 +32,7 @@ function Show(props) {
 
 
     return (
-        <div>
+        <div className="form-container">
             <h1>Chi tiết sản phẩm</h1>
             <Formik
                 initialValues={formData}
