@@ -8,6 +8,7 @@ import YourOrder from "./YourOrder";
 import OrderModel from "../../model/OrderModel";
 import { SET_CART } from "../../redux/action";
 import CustomerModel from "../../model/CustomerModel";
+import axios from 'axios';
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().required("Vui lòng nhập tên người nhận!"),
@@ -45,21 +46,24 @@ function CheckOutForm(props) {
 
   useEffect(() => {
     const customerCookie = CustomerModel.getCookie("customer");
-    // console.log(customerCookie);
     if (customerCookie) {
       const customerData = JSON.parse(customerCookie);
       setCustomer(customerData);
     }
   }, []);
-  
 
   const handleSubmit = (values) => {
     values.cart = cart;
-    values.customer_id = customer.id;
-    // console.log(values);
-    OrderModel.checkout(values)
+    console.log(values.cart)
+    values.customer_id = customer ? customer.id : null;
+    
+    console.log(values.customer_id);
+    axios.post('http://127.0.0.1:8000/api/orders/checkout', values, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
       .then((res) => {
-       
         Swal.fire({
           icon: "success",
           title: "Thanh toán thành công!",
@@ -69,11 +73,11 @@ function CheckOutForm(props) {
         // set local, setcart
         localStorage.removeItem("cart");
         dispatch({ type: SET_CART, payload: [] });
-        // chuyen huong
+        // chuyển hướng
         navigate('/');
       })
       .catch((err) => {
-        console.error(err)
+        console.error(err);
         Swal.fire({
           icon: "error",
           title: "Thanh toán thất bại!",
@@ -82,6 +86,7 @@ function CheckOutForm(props) {
         });
       });
   };
+
   return (
     <Formik
       enableReinitialize={true}
@@ -94,12 +99,12 @@ function CheckOutForm(props) {
           <div className="row px-xl-5">
             <div className="col-lg-8">
               <h5 className="section-title position-relative text-uppercase mb-3">
-                <span className="bg-secondary pr-3">Billing Address</span>
+                <span className="bg-secondary pr-3">Địa chỉ thanh toán</span>
               </h5>
               <div className="bg-light p-30 mb-5">
                 <div className="row">
                   <div className="col-md-6 form-group">
-                    <label>Name</label>
+                    <label>Tên khách hàng</label>
                     <Field
                       className="form-control"
                       type="text"
@@ -156,7 +161,7 @@ function CheckOutForm(props) {
                       value={customer.address}
                       onChange={handleChange}
                     />
-                     <ErrorMessage name="address" component="div" className="error" />
+                    <ErrorMessage name="address" component="div" className="error" />
                   </div>
                 </div>
                 <div className="mb-5">

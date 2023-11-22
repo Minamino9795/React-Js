@@ -9,13 +9,13 @@ function YourOrder(props) {
   const [products, setProducts] = useState([]);
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
-  // console.log(products);
+  console.log(cart);
 
   useEffect(() => {
     axios.get('http://127.0.0.1:8000/api/products')
             .then(res => {
                 setProducts(res.data);
-                console.log(res);
+                // console.log(res);
             })
       .catch((err) => {
         throw err;

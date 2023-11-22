@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 function Sidebar(props) {
     return (
         <>
@@ -116,7 +117,7 @@ function Sidebar(props) {
                                             </a>
                                             <div className="dropdown-menu bg-primary rounded-0 border-0 m-0">
                                                 <a href="/cart" className="dropdown-item">
-                                                   Giỏ hàng
+                                                    Giỏ hàng
                                                 </a>
                                                 <a href="/checkout" className="dropdown-item">
                                                     Thanh toán
@@ -219,7 +220,7 @@ function Sidebar(props) {
                                                     className="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp"
                                                     href="#"
                                                 >
-                                                   Mua ngay
+                                                    Mua ngay
                                                 </a>
                                             </div>
                                         </div>

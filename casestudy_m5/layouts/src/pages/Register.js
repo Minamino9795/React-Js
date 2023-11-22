@@ -1,131 +1,136 @@
-import MasterLayout from "../layouts/MasterLayout";
 import React from "react";
-function Register(props) {
-    return (
-        <>
-            <>
-                <meta charSet="utf-8" />
-                <meta
-                    name="viewport"
-                    content="width=device-width, initial-scale=1, shrink-to-fit=no"
-                />
-                <link
-                    rel="apple-touch-icon"
-                    sizes="76x76"
-                    href="../assets/img/apple-icon.png"
-                />
-                <link rel="icon" type="image/png" href="../assets/img/favicon.png" />
-                <title>Material Dashboard 2 by Creative Tim</title>
-                <link
-                    rel="stylesheet"
-                    type="text/css"
-                    href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700"
-                />
-                <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
-                <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
-                <link
-                    href="https://fonts.googleapis.com/icon?family=Material+Icons+Round"
-                    rel="stylesheet"
-                />
-                <link
-                    id="pagestyle"
-                    href="../assets/css/material-dashboard.css?v=3.1.0"
-                    rel="stylesheet"
-                />
-                <div className="container position-sticky z-index-sticky top-0">
-                    <div className="row">
-                        <div className="col-12"></div>
-                    </div>
-                </div>
-                <main className="main-content  mt-0">
-                    <section>
-                        <div className="page-header min-vh-100">
-                            <div className="container">
-                                <div className="row">
-                                    <div className="col-6 d-lg-flex d-none h-100 my-auto pe-0 position-absolute top-0 start-0 text-center justify-content-center flex-column">
-                                        <div
-                                            className="position-relative bg-gradient-primary h-100 m-3 px-7 border-radius-lg d-flex flex-column justify-content-center"
-                                            style={{
-                                                backgroundImage:
-                                                    'url("../assets/img/illustrations/illustration-signup.jpg")',
-                                                backgroundSize: "cover"
-                                            }}
-                                        ></div>
-                                    </div>
-                                    <div className="col-xl-4 col-lg-5 col-md-7 d-flex flex-column ms-auto me-auto ms-lg-auto me-lg-5">
-                                        <div className="card card-plain">
-                                            <div className="card-header">
-                                                <h4 className="font-weight-bolder">Sign Up</h4>
-                                                <p className="mb-0">
-                                                    Enter your email and password to register
-                                                </p>
-                                            </div>
-                                            <div className="card-body">
-                                                <form role="form">
-                                                    <div className="input-group input-group-outline mb-3">
-                                                        <label className="form-label">Name</label>
-                                                        <input type="text" className="form-control" />
-                                                    </div>
-                                                    <div className="input-group input-group-outline mb-3">
-                                                        <label className="form-label">Email</label>
-                                                        <input type="email" className="form-control" />
-                                                    </div>
-                                                    <div className="input-group input-group-outline mb-3">
-                                                        <label className="form-label">Password</label>
-                                                        <input type="password" className="form-control" />
-                                                    </div>
-                                                    <div className="form-check form-check-info text-start ps-0">
-                                                        <input
-                                                            className="form-check-input"
-                                                            type="checkbox"
-                                                            defaultValue=""
-                                                            id="flexCheckDefault"
-                                                            defaultChecked=""
-                                                        />
-                                                        <label
-                                                            className="form-check-label"
-                                                            htmlFor="flexCheckDefault"
-                                                        >
-                                                            I agree the{" "}
-                                                            <a
-                                                                href="javascript:;"
-                                                                className="text-dark font-weight-bolder"
-                                                            >
-                                                                Terms and Conditions
-                                                            </a>
-                                                        </label>
-                                                    </div>
-                                                    <div className="text-center">
-                                                        <button
-                                                            type="button"
-                                                            className="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0"
-                                                        >
-                                                            Sign Up
-                                                        </button>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                            <div className="card-footer text-center pt-0 px-lg-2 px-1">
-                                                <p className="mb-2 text-sm mx-auto">
-                                                    Already have an account?
-                                                    <a
-                                                        href="../pages/sign-in.html"
-                                                        className="text-primary text-gradient font-weight-bold"
-                                                    >
-                                                        Sign in
-                                                    </a>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                </main>
-            </>
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import { useNavigate, Link } from "react-router-dom";
+import * as Yup from "yup";
+import Swal from "sweetalert2";
+import CustomerModel from "../model/CustomerModel";
 
-        </>
-    )
+const SignupSchema = Yup.object().shape({
+  name: Yup.string().required("Vui lòng nhập tên!"),
+  email: Yup.string().required("Vui lòng nhập email!"),
+  phone: Yup.number().required("Vui lòng nhập số điện thoại!"),
+  address: Yup.string().required("Vui lòng nhập địa chỉ!"),
+  password: Yup.string().required("Vui lòng nhập mật khẩu!")
+});
+
+const initialValues = {
+  name: "",
+  email: "",
+  phone: "",
+  address: "",
+  password: "",
+};
+
+function Register(props) {
+  const navigate = useNavigate();
+
+  const handleSubmit = (values) => {
+    CustomerModel.register(values)
+    .then((res) => {
+        // console.log(values);
+        handleRegisterSuccess();
+        navigate("/login");
+      })
+      .catch((err) => {
+        Swal.fire({
+          icon: "error",
+          title: "Có lỗi xảy ra khi đăng ký!",
+          text: err.message,
+        });
+      });
+  };
+
+  const handleRegisterSuccess = () => {
+    Swal.fire({
+      icon: "success",
+      title: "Đăng ký thành công vui lòng đăng nhập!",
+      showConfirmButton: false,
+      timer: 2000,
+    });
+  };
+
+  return (
+    <>
+      <Formik
+        initialValues={initialValues}
+        validationSchema={SignupSchema}
+        onSubmit={handleSubmit}
+      >
+        <Form>
+          <div className="container py-5 h-100">
+            <div className="bg-light p-30 mb-5">
+              <div className="row">
+                <div className="col-md-6 form-group">
+                  <label htmlFor="name">Name</label>
+                  <Field
+                    className="form-control"
+                    type="text"
+                    placeholder="Name"
+                    name="name"
+                  />
+                   <ErrorMessage name="name" component="div" className="error-message" />
+                </div>
+                <div className="col-md-6 form-group">
+                  <label>E-mail</label>
+                  <Field
+                    className="form-control"
+                    type="email"
+                    placeholder="example@email.com"
+                    name="email"
+                  />
+                   <ErrorMessage name="email" component="div" className="error-message" />
+                </div>
+                <div className="col-md-6 form-group">
+                  <label>Phone</label>
+                  <Field
+                    className="form-control"
+                    type="text"
+                    placeholder="+123 456 789"
+                    name="phone"
+                  />
+                   <ErrorMessage name="phone" component="div" className="error-message" />
+                </div>
+                <div className="col-md-6 form-group">
+                  <label>Address</label>
+                  <Field
+                    className="form-control"
+                    type="text"
+                    placeholder="......."
+                    name="address"
+                  />
+                   <ErrorMessage name="address" component="div" className="error-message" />
+                </div>
+                <div className="col-md-6 form-group">
+                  <label>Password</label>
+                  <Field
+                    className="form-control"
+                    type="password"
+                    placeholder="Pass word"
+                    name="password"
+                  />
+                   <ErrorMessage name="password" component="div" className="error-message" />
+                </div>
+                <div className="col-md-4 offset-md-4">
+                  <button
+                    className="btn btn-dark btn-lg btn-block"
+                    type="submit"
+                  >
+                    Register
+                  </button>
+                  <Link
+                    className="btn btn-success btn-lg btn-block"
+                    to="/login"
+                  >
+                    Back
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Form>
+      </Formik>
+    </>
+  );
 }
+
 export default Register;
