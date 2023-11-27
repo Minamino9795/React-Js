@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NumericFormat } from "react-number-format";
-import ProductModel from "../../model/ProductModel";
+// import ProductModel from "../../model/ProductModel";
 import axios from "axios";
 // import MasterLayout from "../../layouts/MasterLayout";
 

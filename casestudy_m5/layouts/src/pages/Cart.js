@@ -211,7 +211,7 @@ function Cart(props) {
                     <h5>Tổng thanh toán:</h5>
                     <h5>
                       <NumericFormat
-                        value={cartTotal + 20000}
+                        value={cartTotal}
                         allowLeadingZeros
                         thousandSeparator="."
                         decimalSeparator=","
@@ -225,7 +225,7 @@ function Cart(props) {
                     href=""
                     className="btn btn-block btn-primary font-weight-bold my-3 py-3"
                   >
-                    Thanh toán
+                  Đặt hàng
                   </button>
                 </div>
               </div>

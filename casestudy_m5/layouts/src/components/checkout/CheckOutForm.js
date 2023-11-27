@@ -167,7 +167,7 @@ function CheckOutForm(props) {
                 <div className="mb-5">
                   <div className="bg-light p-30">
                     <button type="submit" className="btn btn-block btn-primary font-weight-bold py-3">
-                      Place Order
+                     Đặt hàng
                     </button>
                   </div>
                 </div>

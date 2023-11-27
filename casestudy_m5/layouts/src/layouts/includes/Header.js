@@ -32,8 +32,6 @@ function Header(props) {
 
     return (
         <>
-
-
             <div className="col-lg-6 text-center text-lg-right">
 
 
@@ -105,9 +103,9 @@ function Header(props) {
                                 </>
                             ) : (
                                 <>
-                                <i className="fas fa-user" /> Đăng nhập
-                              </>
-                                
+                                    <i className="fas fa-user" /> Đăng nhập
+                                </>
+
                             )}
                         </button>
                         <div className="dropdown-menu dropdown-menu-right">
@@ -117,7 +115,7 @@ function Header(props) {
                                 </Link>
                             ) : (
                                 <div>
-                                    <Link to="/login" type="" >
+                                    <Link to="/login">
                                         Đăng nhập
                                     </Link>
                                 </div>
